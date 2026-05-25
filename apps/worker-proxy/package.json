@@ -1,0 +1,21 @@
+{
+  "name": "@hobo/worker-proxy",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "wrangler dev",
+    "lint": "echo \"no lint configured\"",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@hobo/shared": "workspace:*"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20250501.0",
+    "typescript": "^5.6.0",
+    "vitest": "^2.1.0",
+    "wrangler": "^3.99.0"
+  }
+}

@@ -1,0 +1,6 @@
+name = "hobo-worker-proxy"
+main = "src/worker.ts"
+compatibility_date = "2026-05-25"
+
+[vars]
+HOBO_RATE_LIMIT_MAX_PER_MINUTE = "30"

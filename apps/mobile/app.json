@@ -1,0 +1,22 @@
+{
+  "expo": {
+    "name": "Hobo",
+    "slug": "hobo",
+    "version": "0.0.1",
+    "orientation": "portrait",
+    "userInterfaceStyle": "automatic",
+    "scheme": "hobo",
+    "assetBundlePatterns": ["**/*"],
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "adaptiveIcon": {
+        "backgroundColor": "#f4ead2"
+      }
+    },
+    "extra": {
+      "proxyUrl": "http://127.0.0.1:8787/chat"
+    }
+  }
+}

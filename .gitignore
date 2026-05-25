@@ -1,0 +1,7 @@
+node_modules/
+dist/
+.expo/
+.wrangler/
+.dev.vars
+*.local
+pnpm-debug.log*
