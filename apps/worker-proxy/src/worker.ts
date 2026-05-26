@@ -29,10 +29,23 @@ const PROVIDER_TIMEOUT_MS = 4000;
 const RATE_LIMIT_WINDOW_MS = 60_000;
 const devRateLimits = new Map<string, DevRateEntry>();
 
+const CORS_HEADERS = {
+  "Access-Control-Allow-Origin": "*",
+  "Access-Control-Allow-Methods": "POST, OPTIONS",
+  "Access-Control-Allow-Headers": `Content-Type, ${HOBO_CLIENT_ID_HEADER}`
+};
+
 function json(status: number, body: unknown) {
   return new Response(JSON.stringify(body), {
     status,
-    headers: { "Content-Type": JSON_CONTENT_TYPE }
+    headers: { "Content-Type": JSON_CONTENT_TYPE, ...CORS_HEADERS }
+  });
+}
+
+function preflight() {
+  return new Response(null, {
+    status: 204,
+    headers: CORS_HEADERS
   });
 }
 
@@ -198,6 +211,10 @@ async function callProvider(
 export default {
   async fetch(request: Request, env: Env) {
     const url = new URL(request.url);
+
+    if (request.method === "OPTIONS") {
+      return preflight();
+    }
 
     if (url.pathname !== CHAT_ENDPOINT_PATH) {
       return json(404, { error: "Not found" });
